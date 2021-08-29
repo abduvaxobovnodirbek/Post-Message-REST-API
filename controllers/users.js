@@ -2,9 +2,7 @@ import User from "../models/users.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import {validationResult} from "express-validator"
-import dotenv from "dotenv"
 
-dotenv.config()
 
 export const signup = async (req,res,next)=>{
     const firstName = req.body.firstName
@@ -66,7 +64,7 @@ export const signin = async (req,res,next)=>{
         res.status(404).json({message:error})
     }
 
-    const token = jwt.sign({email:user.email,id:user._id},process.env.TOKEN,{expiresIn:"1h"})
+    const token = jwt.sign({email:user.email,id:user._id},"test",{expiresIn:"1h"})
 
     res.status(200).json({result:user,token:token})
 

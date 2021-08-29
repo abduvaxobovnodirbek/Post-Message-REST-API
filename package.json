@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "heroku-postbuild": "npm run install-client && npm run build"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
