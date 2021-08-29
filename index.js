@@ -2,7 +2,6 @@ import express from "express"
 import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import cors from "cors"
-import dotenv from "dotenv"
 import postRoutes from "./routes/posts.js"
 import userRoutes from "./routes/users.js"
 import multer from "multer"
@@ -10,9 +9,8 @@ import path from "path"
 import crypto from "crypto"
 
 const app = express()
-dotenv.config()
-const CONNECTION_URL = process.env.CONNECTION_URL
-const PORT = process.env.PORT
+const CONNECTION_URL = "mongodb+srv://nodirbek:Id3tvfAKfvLek63y@cluster0.z5nqa.mongodb.net/blog"
+const PORT = process.env.PORT || 5000
 
 app.use(cors())
 app.use(bodyParser.json({limit:"30mb",extended:true}))
@@ -53,7 +51,6 @@ app.get("/",(req,res)=>{
 mongoose.connect(CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=>{
     app.listen(PORT)
-    console.log(`server listens on port ${PORT}`)
 })
 .catch(err=>{
     console.log("serverga ulanmadi");
