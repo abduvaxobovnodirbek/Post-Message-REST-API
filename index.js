@@ -46,6 +46,9 @@ app.use("/posts",postRoutes)
 app.use("/user",userRoutes)
 
 
+app.get("/",(req,res)=>{
+    res.send("Hello to Memory API")
+})
 
 mongoose.connect(CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=>{
