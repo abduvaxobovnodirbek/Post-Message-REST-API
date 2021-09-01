@@ -28,12 +28,8 @@ const postSchema = new Schema({
    user:{
        type:Schema.Types.ObjectId,
        ref:"User"
-   },
-   createdAt: {
-    type: Date,
-    default: new Date(),
-   },
-})
+   }
+},{timestamps:true})
 
 const postModel = mongoose.model("Post",postSchema)
 
