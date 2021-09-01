@@ -1,15 +1,17 @@
 import express from "express"
 import mongoose from "mongoose"
-import bodyParser from "body-parser"
 import cors from "cors"
 import postRoutes from "./routes/posts.js"
 import userRoutes from "./routes/users.js"
 import multer from "multer"
 import path from "path"
 import crypto from "crypto"
+import dotenv from "dotenv"
 
 const app = express()
-const CONNECTION_URL = "mongodb+srv://nodirbek:Id3tvfAKfvLek63y@cluster0.z5nqa.mongodb.net/blog"
+dotenv.config()
+
+const CONNECTION_URL = process.env.MONGO_URL
 const PORT = process.env.PORT || 5000
 
 app.use(cors())
@@ -50,6 +52,7 @@ app.get("/",(req,res)=>{
 
 mongoose.connect(CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=>{
+    console.log("ulandi",PORT);
     app.listen(PORT)
 })
 .catch(err=>{
